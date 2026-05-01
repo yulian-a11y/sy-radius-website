@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Admin - SY Radius</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="terminal-mode">
+    <div class="container">
+        <div class="terminal-header">
+            <h1>🖥️ SY RADIUS TERMINAL v1.0</h1>
+            <p>root@syradius:~# <a href="index.html">[HOME]</a></p>
+        </div>
+
+        <!-- Password Modal -->
+        <div id="passwordModal" class="modal">
+            <div class="modal-content">
+                <h2>🔐 SY Radius Admin</h2>
+                <input type="password" id="adminPass" placeholder="Password...">
+                <button onclick="checkPassword()">ENTER</button>
+            </div>
+        </div>
+
+        <!-- Admin Panel (hidden awal) -->
+        <div id="adminPanel" style="display:none;">
+            <div class="admin-section">
+                <h3>➕ Tambah Berita Baru</h3>
+                <form id="addNewsForm">
+                    <input type="text" name="judul" placeholder="Judul berita" required>
+                    <textarea name="isi" placeholder="Isi berita lengkap" required></textarea>
+                    <input type="url" name="media_url" placeholder="URL gambar (opsional)">
+                    <button type="submit">🚀 Publish</button>
+                </form>
+            </div>
+
+            <div class="admin-section">
+                <h3>📋 Daftar Berita</h3>
+                <div id="newsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function checkPassword() {
+            if (document.getElementById('adminPass').value === 'radius2024') {
+                document.getElementById('passwordModal').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadAdminData();
+            } else {
+                alert('❌ Password salah!');
+            }
+        }
+    </script>
+</body>
+</html>
